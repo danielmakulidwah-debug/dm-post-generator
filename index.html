@@ -9,174 +9,182 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --orange: #e8491d;
-      --orange-dark: #c03a14;
-      --bg: #0d0d0d;
-      --surface: #161616;
-      --surface2: #1f1f1f;
-      --border: rgba(255,255,255,0.08);
-      --border2: rgba(255,255,255,0.14);
-      --text: #f0ede8;
-      --muted: #888;
-      --radius: 10px;
+      --orange: #e8491d; --orange-dark: #c03a14;
+      --bg: #0d0d0d; --surface: #161616; --surface2: #1f1f1f;
+      --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+      --text: #f0ede8; --muted: #666; --radius: 10px;
     }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
     header {
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex; align-items: center; gap: 12px;
-      position: sticky; top: 0;
-      background: rgba(13,13,13,0.92);
-      backdrop-filter: blur(12px);
-      z-index: 10;
+      border-bottom: 1px solid var(--border); padding: 0.9rem 1.5rem;
+      display: flex; align-items: center; gap: 10px;
+      position: sticky; top: 0; background: rgba(13,13,13,0.94);
+      backdrop-filter: blur(12px); z-index: 10;
     }
-    .logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; color: var(--text); display: flex; align-items: center; gap: 8px; }
-    .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
-    .badge { margin-left: auto; background: rgba(232,73,29,0.15); border: 1px solid rgba(232,73,29,0.3); color: var(--orange); padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; }
-    .container { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
-    .hero { text-align: center; margin-bottom: 2.5rem; }
-    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(26px, 5vw, 42px); font-weight: 700; line-height: 1.15; margin-bottom: 10px; }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--text); display: flex; align-items: center; gap: 7px; }
+    .logo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+    .badge { margin-left: auto; background: rgba(232,73,29,0.15); border: 1px solid rgba(232,73,29,0.3); color: var(--orange); padding: 3px 11px; border-radius: 999px; font-size: 11px; font-weight: 500; }
+    .container { max-width: 680px; margin: 0 auto; padding: 1.75rem 1.25rem 4rem; }
+    .hero { text-align: center; margin-bottom: 1.75rem; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(22px, 5vw, 32px); font-weight: 700; line-height: 1.2; margin-bottom: 7px; }
     .hero h1 span { color: var(--orange); }
-    .hero p { color: var(--muted); font-size: 15px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
-    .section-label { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .hero p { color: var(--muted); font-size: 13px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 0.85rem; }
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin-bottom: 9px; }
     textarea {
-      width: 100%; min-height: 130px; resize: vertical;
+      width: 100%; min-height: 100px; resize: vertical;
       background: var(--surface2); border: 1px solid var(--border2);
       border-radius: 8px; color: var(--text);
-      font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.65;
-      padding: 12px 14px; outline: none; transition: border-color .2s;
+      font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6;
+      padding: 10px 13px; outline: none; transition: border-color .2s;
     }
     textarea:focus { border-color: var(--orange); }
-    textarea::placeholder { color: #555; }
-    .counter { font-size: 12px; color: var(--muted); text-align: right; margin-top: 5px; }
-    .platform-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    textarea::placeholder { color: #444; font-size: 13px; }
+    .counter { font-size: 11px; color: #444; text-align: right; margin-top: 4px; }
+
+    /* Platform — single select, radio style */
+    .platform-grid { display: flex; flex-wrap: wrap; gap: 7px; }
     .platform-btn {
-      display: flex; align-items: center; gap: 7px;
-      padding: 7px 14px; border-radius: 8px;
-      border: 1px solid var(--border2); background: var(--surface2);
+      display: flex; align-items: center; gap: 6px; padding: 6px 13px;
+      border-radius: 8px; border: 1px solid var(--border2); background: var(--surface2);
       color: var(--muted); font-size: 13px; font-family: 'Inter', sans-serif;
-      cursor: pointer; transition: all .18s;
+      cursor: pointer; transition: all .18s; user-select: none;
     }
-    .platform-btn .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .platform-btn .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .platform-btn.active { border-color: var(--orange); color: var(--orange); background: rgba(232,73,29,0.1); }
-    .tone-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* Tone chips */
+    .tone-row { display: flex; flex-wrap: wrap; gap: 7px; }
     .tone-chip {
-      padding: 6px 14px; border-radius: 999px; font-size: 13px;
+      padding: 5px 13px; border-radius: 999px; font-size: 12px;
       font-family: 'Inter', sans-serif; border: 1px solid var(--border2);
       background: var(--surface2); color: var(--muted); cursor: pointer; transition: all .18s;
     }
     .tone-chip.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+    /* Generate button */
     .generate-btn {
-      width: 100%; padding: 14px; font-size: 15px;
+      width: 100%; padding: 13px; font-size: 15px;
       font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: .03em;
       background: var(--orange); color: #fff; border: none;
       border-radius: var(--radius); cursor: pointer;
       transition: background .2s, transform .1s;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
     .generate-btn:hover { background: var(--orange-dark); }
     .generate-btn:active { transform: scale(.99); }
-    .generate-btn:disabled { opacity: .45; cursor: not-allowed; }
+    .generate-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+    /* Output */
     .output-section { display: none; }
     .output-section.visible { display: block; }
-    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-    .tab {
-      padding: 6px 14px; font-size: 13px; font-family: 'Inter', sans-serif;
-      border: 1px solid var(--border2); border-radius: 8px;
-      background: var(--surface); color: var(--muted); cursor: pointer; transition: all .18s;
+    .output-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
     }
-    .tab.active { background: var(--surface2); color: var(--text); border-color: var(--border2); }
-    .output-panel { display: none; }
-    .output-panel.active { display: block; }
+    .platform-tag {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500; color: var(--muted);
+    }
+    .platform-tag .dot { width: 7px; height: 7px; border-radius: 50%; }
     .output-box {
       background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 1rem 1.25rem;
-      font-size: 14px; line-height: 1.75; color: var(--text);
-      white-space: pre-wrap; word-break: break-word; min-height: 100px;
+      border-radius: 8px; padding: 1rem 1.1rem;
+      font-size: 14px; line-height: 1.8; color: var(--text);
+      white-space: pre-wrap; word-break: break-word; min-height: 80px;
     }
     .output-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
-    .char-info { font-size: 12px; color: var(--muted); }
+    .char-info { font-size: 11px; color: var(--muted); }
     .char-info.over { color: #e05252; }
-    .action-row { display: flex; gap: 8px; }
+    .action-row { display: flex; gap: 7px; }
     .action-btn {
-      display: flex; align-items: center; gap: 6px;
-      padding: 7px 14px; font-size: 13px; font-family: 'Inter', sans-serif;
-      border: 1px solid var(--border2); border-radius: 8px;
+      padding: 6px 13px; font-size: 12px; font-family: 'Inter', sans-serif;
+      border: 1px solid var(--border2); border-radius: 7px;
       background: var(--surface2); color: var(--muted); cursor: pointer; transition: all .18s;
     }
     .action-btn:hover { color: var(--text); }
-    .action-btn.copied { color: #5cb85c; border-color: rgba(92,184,92,.4); }
-    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.25); border-top-color: #fff; border-radius: 50%; animation: spin .6s linear infinite; }
+    .action-btn.copied { color: #5cb85c; border-color: rgba(92,184,92,.35); }
+
+    .spinner { display: inline-block; width: 15px; height: 15px; border: 2px solid rgba(255,255,255,.2); border-top-color: #fff; border-radius: 50%; animation: spin .6s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .powered { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #444; margin-bottom: 1.5rem; }
-    .powered-dot { width: 6px; height: 6px; border-radius: 50%; background: #25c77a; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+
+    .powered { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #383838; margin-bottom: 1.25rem; }
+    .powered-dot { width: 5px; height: 5px; border-radius: 50%; background: #25c77a; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border); font-size: 12px; color: #383838; }
     footer a { color: var(--orange); text-decoration: none; }
-    @media (max-width: 600px) { header { padding: 1rem; } .container { padding: 1.5rem 1rem 3rem; } }
+    @media (max-width: 500px) { header { padding: 0.8rem 1rem; } .container { padding: 1.25rem 1rem 3rem; } }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-dot"></div>
-    DM Car Agency
-  </div>
+  <div class="logo"><div class="logo-dot"></div>DM Car Agency</div>
   <span class="badge">Post Generator</span>
 </header>
 
 <div class="container">
   <div class="hero">
-    <h1>Turn Car Details Into<br><span>Viral Social Posts</span></h1>
-    <p>Paste any car info — get ready-to-post captions with hashtags for every platform</p>
+    <h1>Car Details →<br><span>Ready-to-Post Caption</span></h1>
+    <p>Pick a platform, paste your car info, get a brief punchy post instantly</p>
   </div>
 
-  <div class="powered">
-    <span class="powered-dot"></span>
-    AI-powered &mdash; ready to use, no setup required
-  </div>
+  <div class="powered"><span class="powered-dot"></span>AI-powered — no setup required</div>
 
+  <!-- Platform — single select -->
   <div class="card">
-    <div class="section-label">Car details</div>
-    <textarea id="carInput" placeholder="Paste car details here — WhatsApp note, Facebook post, spec sheet, or just type freely.
-
-Example: Toyota Hilux Double Cab 2022, 4WD, diesel, 28,000 km, silver, MWK 68,000,000. Excellent condition, full service history. Located Blantyre."></textarea>
-    <div class="counter" id="inputCounter">0 characters</div>
-  </div>
-
-  <div class="card">
-    <div class="section-label">Platforms</div>
+    <div class="section-label">Select platform</div>
     <div class="platform-grid" id="platformGrid">
-      <button class="platform-btn active" data-platform="facebook"><span class="dot" style="background:#1877F2"></span> Facebook</button>
-      <button class="platform-btn active" data-platform="instagram"><span class="dot" style="background:#E1306C"></span> Instagram</button>
-      <button class="platform-btn" data-platform="twitter"><span class="dot" style="background:#1DA1F2"></span> X / Twitter</button>
-      <button class="platform-btn" data-platform="whatsapp"><span class="dot" style="background:#25D366"></span> WhatsApp</button>
-      <button class="platform-btn" data-platform="tiktok"><span class="dot" style="background:#fe2c55"></span> TikTok</button>
-      <button class="platform-btn" data-platform="linkedin"><span class="dot" style="background:#0A66C2"></span> LinkedIn</button>
+      <button class="platform-btn active" data-platform="facebook"   data-color="#1877F2"><span class="dot" style="background:#1877F2"></span>Facebook</button>
+      <button class="platform-btn"        data-platform="instagram"  data-color="#E1306C"><span class="dot" style="background:#E1306C"></span>Instagram</button>
+      <button class="platform-btn"        data-platform="twitter"    data-color="#1DA1F2"><span class="dot" style="background:#1DA1F2"></span>X / Twitter</button>
+      <button class="platform-btn"        data-platform="whatsapp"   data-color="#25D366"><span class="dot" style="background:#25D366"></span>WhatsApp</button>
+      <button class="platform-btn"        data-platform="tiktok"     data-color="#fe2c55"><span class="dot" style="background:#fe2c55"></span>TikTok</button>
+      <button class="platform-btn"        data-platform="linkedin"   data-color="#0A66C2"><span class="dot" style="background:#0A66C2"></span>LinkedIn</button>
     </div>
   </div>
 
+  <!-- Tone -->
   <div class="card">
     <div class="section-label">Tone</div>
     <div class="tone-row" id="toneRow">
       <button class="tone-chip active" data-tone="professional">Professional</button>
-      <button class="tone-chip" data-tone="hype">Hype / Energetic</button>
-      <button class="tone-chip" data-tone="luxury">Luxury / Premium</button>
-      <button class="tone-chip" data-tone="friendly">Friendly &amp; Casual</button>
+      <button class="tone-chip" data-tone="hype">Hype</button>
+      <button class="tone-chip" data-tone="luxury">Luxury</button>
+      <button class="tone-chip" data-tone="friendly">Friendly</button>
       <button class="tone-chip" data-tone="urgent">Urgent Deal</button>
     </div>
   </div>
 
-  <button class="generate-btn" id="generateBtn" onclick="generatePosts()">
-    &#9889; Generate Posts
-  </button>
+  <!-- Car details -->
+  <div class="card">
+    <div class="section-label">Car details</div>
+    <textarea id="carInput" placeholder="Paste car info here — make, model, year, price, mileage, condition, location, extras...
 
+Example: Toyota DYNA 2018, diesel, good condition, 14B engine, MWK 29M, Kasungu."></textarea>
+    <div class="counter" id="inputCounter">0 characters</div>
+  </div>
+
+  <button class="generate-btn" id="generateBtn" onclick="generate()">&#9889; Generate Post</button>
+
+  <!-- Output -->
   <div class="output-section" id="outputSection">
-    <div class="tabs" id="tabs"></div>
-    <div id="panels"></div>
+    <div class="card" style="margin-bottom:0">
+      <div class="output-header">
+        <div class="platform-tag" id="platformTag"></div>
+        <span style="font-size:11px;color:#383838" id="toneTag"></span>
+      </div>
+      <div class="output-box" id="outputBox"></div>
+      <div class="output-footer">
+        <span class="char-info" id="charInfo"></span>
+        <div class="action-row">
+          <button class="action-btn" id="copyBtn" onclick="copyPost()">&#128203; Copy</button>
+          <button class="action-btn" onclick="generate()">&#8635; Redo</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -185,212 +193,127 @@ Example: Toyota Hilux Double Cab 2022, 4WD, diesel, 28,000 km, silver, MWK 68,00
 </footer>
 
 <script>
-  const carInput     = document.getElementById('carInput');
-  const inputCounter = document.getElementById('inputCounter');
-  const generateBtn  = document.getElementById('generateBtn');
-  const outputSection = document.getElementById('outputSection');
-  const tabsEl       = document.getElementById('tabs');
-  const panelsEl     = document.getElementById('panels');
+  const platformColors = { facebook:'#1877F2', instagram:'#E1306C', twitter:'#1DA1F2', whatsapp:'#25D366', tiktok:'#fe2c55', linkedin:'#0A66C2' };
+  const platformNames  = { facebook:'Facebook', instagram:'Instagram', twitter:'X / Twitter', whatsapp:'WhatsApp', tiktok:'TikTok', linkedin:'LinkedIn' };
+  const platformLimits = { facebook:63206, instagram:2200, twitter:280, whatsapp:65536, tiktok:2200, linkedin:3000 };
 
-  carInput.addEventListener('input', () => {
-    inputCounter.textContent = carInput.value.length + ' characters';
-  });
+  // Strict per-platform rules — brief & punchy
+  const platformRules = {
+    facebook:  'Write 3–4 short punchy paragraphs. Max 120 words total. End with 5–7 hashtags on a new line.',
+    instagram: 'Write 2–3 lines of punchy copy, heavy on emojis. Max 80 words. End with 10–15 hashtags on a new line.',
+    twitter:   'One single punchy sentence or two very short ones. Max 220 characters including 2–3 hashtags. No fluff.',
+    whatsapp:  'Write like a real WhatsApp message. 3–4 short lines. Use *bold* for key specs and price. NO hashtags. End with the contact number.',
+    tiktok:    'Ultra-short, Gen-Z energy, 2–3 punchy lines max. Heavy emojis. End with 8–10 hashtags.',
+    linkedin:  'Professional tone, 2 short paragraphs, max 100 words. End with 3–5 hashtags.'
+  };
 
+  const toneDescriptions = {
+    professional: 'professional and trustworthy',
+    hype:         'high-energy and exciting',
+    luxury:       'luxury and aspirational',
+    friendly:     'warm and casual like a friend',
+    urgent:       'urgent — this deal won\'t last'
+  };
+
+  const toneNames = { professional:'Professional', hype:'Hype', luxury:'Luxury', friendly:'Friendly', urgent:'Urgent Deal' };
+
+  let selectedPlatform = 'facebook';
+  let selectedTone = 'professional';
+
+  // Single-select platform
   document.getElementById('platformGrid').addEventListener('click', e => {
     const btn = e.target.closest('.platform-btn');
-    if (btn) btn.classList.toggle('active');
+    if (!btn) return;
+    document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedPlatform = btn.dataset.platform;
   });
 
+  // Single-select tone
   document.getElementById('toneRow').addEventListener('click', e => {
     const chip = e.target.closest('.tone-chip');
     if (!chip) return;
     document.querySelectorAll('.tone-chip').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
+    selectedTone = chip.dataset.tone;
   });
 
-  const platformNames = {
-    facebook: 'Facebook', instagram: 'Instagram', twitter: 'X / Twitter',
-    whatsapp: 'WhatsApp', tiktok: 'TikTok', linkedin: 'LinkedIn'
-  };
-  const platformLimits = {
-    facebook: 63206, instagram: 2200, twitter: 280,
-    whatsapp: 65536, tiktok: 2200, linkedin: 3000
-  };
-  const platformInstructions = {
-    facebook:  '200-300 words, storytelling style, 5-10 hashtags at the end',
-    instagram: '150-200 words, emoji-rich, strong CTA, 15-20 hashtags in a block at the very end',
-    twitter:   'Max 270 chars total including hashtags, ultra punchy, 2-3 hashtags only',
-    whatsapp:  '3-5 short punchy paragraphs, NO hashtags, use *bold* for key info, end with contact number',
-    tiktok:    'Super short and casual, high-energy Gen-Z voice, 8-10 hashtags at end',
-    linkedin:  '200-250 words, professional business tone, 3-5 hashtags'
-  };
-  const toneDescriptions = {
-    professional: 'professional, polished, and trustworthy — confident but approachable',
-    hype:         'high-energy, exciting, bold — power words, lots of enthusiasm',
-    luxury:       'luxury, exclusive, aspirational — refined language, premium feel',
-    friendly:     'warm, casual, conversational — like talking to a friend',
-    urgent:       'urgent, time-sensitive, FOMO-driven — deal about to end energy'
-  };
+  const carInput = document.getElementById('carInput');
+  carInput.addEventListener('input', () => {
+    document.getElementById('inputCounter').textContent = carInput.value.length + ' characters';
+  });
 
-  function getSelectedPlatforms() {
-    return [...document.querySelectorAll('.platform-btn.active')].map(b => b.dataset.platform);
-  }
-  function getSelectedTone() {
-    const c = document.querySelector('.tone-chip.active');
-    return c ? c.dataset.tone : 'professional';
-  }
-
-  async function callAPI(prompt) {
-    const res = await fetch('/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-    return data.text;
-  }
-
-  async function generatePosts() {
+  async function generate() {
     const details = carInput.value.trim();
     if (!details) { carInput.focus(); return; }
-    const platforms = getSelectedPlatforms();
-    if (!platforms.length) { alert('Please select at least one platform.'); return; }
 
-    generateBtn.disabled = true;
-    generateBtn.innerHTML = '<span class="spinner"></span> Generating…';
-    outputSection.classList.remove('visible');
+    const btn = document.getElementById('generateBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Writing…';
+    document.getElementById('outputSection').classList.remove('visible');
 
-    const tone = getSelectedTone();
-    const platformBlock = platforms.map(p => `${platformNames[p]}: ${platformInstructions[p]}`).join('\n');
-
-    const prompt = `You are a world-class automotive social media copywriter for DM Car Agency — Malawi's most trusted and fastest-growing car marketplace, headquartered in Blantyre. Your mission: write posts that SELL the car AND grow DM Car Agency into a globally recognized brand.
+    const prompt = `You are a sharp social media copywriter for DM Car Agency — Malawi's #1 trusted car marketplace, based in Blantyre. Write a ${platformNames[selectedPlatform]} post in a ${toneDescriptions[selectedTone]} tone.
 
 CAR DETAILS:
 ${details}
 
-TONE: ${toneDescriptions[tone]}
+PLATFORM RULES — follow exactly:
+${platformRules[selectedPlatform]}
 
-Write a unique, platform-optimized post for EACH of these platforms:
-${platformBlock}
+BRANDING RULES:
+- Mention DM Car Agency naturally — one brief mention is enough, don't overdo it
+- Include contact info once: +265 980 717 420 | dmcaragency.vercel.app
+- Prefix price with MWK
+- Be BRIEF. Less is more. No waffle, no long sentences, no AI-sounding filler
+- Sound human and real
 
-MANDATORY RULES for every post:
-- Naturally promote DM Car Agency as Malawi's #1 trusted car marketplace — position it as world-class, not just local
-- Weave in contact info naturally: +265 980 717 420 | facebook.com/dmcaragency | dmcaragency.vercel.app
-- Always prefix prices with MWK if a price is mentioned
-- Make hashtags powerful and globally discoverable (mix Malawi-specific + global automotive hashtags)
-- Write like a real human copywriter — punchy, genuine, zero AI-sounding filler
-- Position DM Car Agency as the future of African automotive — premium, trusted, modern
-
-FORMAT: Separate each post using exactly: === PLATFORM NAME === (uppercase, matching the platform names I listed)
-Output only the posts. No intro, no explanations, no extra text outside the posts.`;
+Output ONLY the post. No intro, no explanation, no labels.`;
 
     try {
-      const text = await callAPI(prompt);
-      const parsed = parsePosts(text, platforms);
-      renderResults(parsed);
-      outputSection.classList.add('visible');
-      outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch (err) {
-      alert('Generation failed: ' + err.message);
+      const res = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      showResult(data.text);
+    } catch(err) {
+      alert('Error: ' + err.message);
     }
 
-    generateBtn.disabled = false;
-    generateBtn.innerHTML = '&#9889; Generate Posts';
+    btn.disabled = false;
+    btn.innerHTML = '&#9889; Generate Post';
   }
 
-  function parsePosts(text, platforms) {
-    const result = {};
-    const parts = text.split(/===\s*(.+?)\s*===/);
-    let current = null;
-    for (let i = 0; i < parts.length; i++) {
-      const part = parts[i].trim();
-      if (!part) continue;
-      const key = Object.keys(platformNames).find(k =>
-        platformNames[k].toUpperCase() === part.toUpperCase() ||
-        part.toUpperCase().includes(k.toUpperCase())
-      );
-      if (key) { current = key; if (!result[key]) result[key] = ''; }
-      else if (current) { result[current] += part; }
-    }
-    platforms.forEach(p => { if (!result[p]) result[p] = text.trim(); });
-    return result;
+  function showResult(text) {
+    const lim = platformLimits[selectedPlatform];
+    const len = text.length;
+    const over = lim < 65000 && len > lim;
+    const color = platformColors[selectedPlatform];
+
+    document.getElementById('outputBox').textContent = text;
+    document.getElementById('platformTag').innerHTML =
+      `<span class="dot" style="background:${color}"></span>${platformNames[selectedPlatform]}`;
+    document.getElementById('toneTag').textContent = toneNames[selectedTone];
+
+    const charEl = document.getElementById('charInfo');
+    charEl.textContent = len + ' chars' + (lim < 65000 ? ' / ' + lim + ' limit' : '') + (over ? ' ⚠ over' : '');
+    charEl.className = 'char-info' + (over ? ' over' : '');
+
+    document.getElementById('outputSection').classList.add('visible');
+    document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  function renderResults(posts) {
-    tabsEl.innerHTML = '';
-    panelsEl.innerHTML = '';
-    const keys = Object.keys(posts);
-    if (!keys.length) return;
-
-    keys.forEach((platform, i) => {
-      const tab = document.createElement('button');
-      tab.className = 'tab' + (i === 0 ? ' active' : '');
-      tab.textContent = platformNames[platform] || platform;
-      tab.onclick = () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.output-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('panel-' + platform).classList.add('active');
-      };
-      tabsEl.appendChild(tab);
-
-      const content = posts[platform] || '';
-      const lim = platformLimits[platform];
-      const len = content.length;
-      const over = lim < 65000 && len > lim;
-
-      const panel = document.createElement('div');
-      panel.className = 'output-panel' + (i === 0 ? ' active' : '');
-      panel.id = 'panel-' + platform;
-      panel.innerHTML = `
-        <div class="card" style="margin-bottom:0">
-          <div class="output-box" id="box-${platform}">${escHtml(content)}</div>
-          <div class="output-footer">
-            <span class="char-info ${over ? 'over' : ''}">${len.toLocaleString()} chars${lim < 65000 ? ' / ' + lim.toLocaleString() + ' limit' : ''}${over ? ' ⚠ over limit' : ''}</span>
-            <div class="action-row">
-              <button class="action-btn" onclick="copyPost('${platform}', this)">&#128203; Copy</button>
-              <button class="action-btn" onclick="regenerateOne('${platform}')">&#8635; Redo</button>
-            </div>
-          </div>
-        </div>`;
-      panelsEl.appendChild(panel);
-    });
-  }
-
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-
-  function copyPost(platform, btn) {
-    const box = document.getElementById('box-' + platform);
-    if (!box) return;
+  function copyPost() {
+    const box = document.getElementById('outputBox');
+    const btn = document.getElementById('copyBtn');
     navigator.clipboard.writeText(box.textContent).then(() => {
       btn.classList.add('copied');
       btn.innerHTML = '&#10003; Copied!';
       setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '&#128203; Copy'; }, 2000);
     });
   }
-
-  async function regenerateOne(platform) {
-    const box = document.getElementById('box-' + platform);
-    if (!box) return;
-    box.textContent = 'Regenerating…';
-    const details = carInput.value.trim();
-    const tone = getSelectedTone();
-    const prompt = `Write a single ${platformNames[platform]} post (${platformInstructions[platform]}) in a ${toneDescriptions[tone]} tone for DM Car Agency — Malawi's #1 car marketplace.
-
-Car details: ${details}
-
-Include DM Car Agency branding and contact: +265 980 717 420 | facebook.com/dmcaragency | dmcaragency.vercel.app
-Position the agency as world-class. Output only the post text, nothing else.`;
-    try {
-      const text = await callAPI(prompt);
-      box.textContent = text;
-    } catch(e) {
-      box.textContent = 'Error: ' + e.message;
-    }
-  }
 </script>
 </body>
-</html>
+  </html>

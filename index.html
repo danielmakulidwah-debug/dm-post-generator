@@ -259,9 +259,9 @@ Example: Toyota DYNA 2018, diesel, good condition, 14B engine, MWK 29M, Kasungu.
 
     const prompt = `You are a social media copywriter for DM Car Agency — Malawi's #1 trusted car marketplace, based in Blantyre.
 
-Write a ${platformNames[selectedPlatform]} car listing post in a ${toneDescriptions[selectedTone]} tone using EXACTLY this layout structure:
+Write a ${platformNames[selectedPlatform]} car listing post in a ${toneDescriptions[selectedTone]} tone using SIMILAR this layout structure:
 
-*[ATTRACTIVE CATCHY TITLE IN CAPS — describe the car with excitement e.g. STUNNING TOYOTA ALLION JUST LANDED!]*
+*[ATTRACTIVE CATCHY TITLE IN CAPS — describe the car with excitement e.g. {excitement word}... TOYOTA ALLION..{excitement word}..!]*
 
 *FROM DM CAR AGENCY 🔥*
 
@@ -293,6 +293,7 @@ STRICT RULES:
 - Bottom tagline must be attractive, short, and encourage people to visit the website
 - End with the website link: 🌐 https://dmcaragency.vercel.app/
 - Prefix ALL prices with MWK
+- Add hashtags for Facebook post
 - Output ONLY the post. No intro, no explanation, nothing else.`;
 
     try {

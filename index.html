@@ -270,7 +270,7 @@ Write a ${platformNames[selectedPlatform]} car listing post in a ${toneDescripti
 - [SPEC 3 e.g. Automatic Transmission]
 - [SPEC 4 e.g. 45,000 KMS]
 - [SPEC 5 e.g. Seating Capacity: 5]
-- [Add more specs if available]
+- [Add more specs if available but don't guess or add spec that not mentioned ]
 
 *PRICE: MWK [PRICE]*
 *LOCATION: [LOCATION]*
@@ -294,7 +294,9 @@ STRICT RULES:
 - End with the website link: 🌐 https://dmcaragency.vercel.app/
 - Prefix ALL prices with MWK
 - Output ONLY the post. No intro, no explanation, nothing else.`;
-
+- use 5 to 7 hashtag for Facebook post only
+- Dont add any spec that not mentioned 
+    
     try {
       const res = await fetch('/api/generate', {
         method: 'POST',

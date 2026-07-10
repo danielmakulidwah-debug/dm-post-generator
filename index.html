@@ -204,10 +204,10 @@ Example: Toyota DYNA 2018, diesel, good condition, 14B engine, MWK 29M, Kasungu.
 
   // Strict per-platform rules — brief & punchy
   const platformRules = {
-    facebook:  'Write 3–4 short punchy paragraphs. Max 120 words total. End with 5–7 hashtags on a new line.',
+    facebook:  'Write 3–4 short punchy paragraphs. Max 120 words total. End with 5–7 hashtags on a new line. Use emoji appropriately like 📞 instead of contacts, 💰 instead of price and 🔥‼️⛽ for the related words',
     instagram: 'Write 2–3 lines of punchy copy, heavy on emojis. Max 80 words. End with 10–15 hashtags on a new line.',
     twitter:   'One single punchy sentence or two very short ones. Max 220 characters including 2–3 hashtags. No fluff.',
-    whatsapp:  'Write like a real WhatsApp message. 3–4 short lines. Use *bold* for key specs and price. NO hashtags. End with the contact number.',
+    whatsapp:  'Write like a real WhatsApp message. 3–4 short lines. Use *bold* for key specs and price. NO hashtags. End with the contact number. Use emoji appropriately like 📞 instead of contacts, 💰 instead of price and 🔥‼️⛽ for the related words. ',
     tiktok:    'Ultra-short, Gen-Z energy, 2–3 punchy lines max. Heavy emojis. End with 8–10 hashtags.',
     linkedin:  'Professional tone, 2 short paragraphs, max 100 words. End with 3–5 hashtags.'
   };
@@ -275,7 +275,7 @@ Write a ${platformNames[selectedPlatform]} car listing post in a ${toneDescripti
 *PRICE: MWK [PRICE]*
 *LOCATION: [LOCATION]*
 
-contact: user number | user number
+contact: user number | user number  [if only one contact, use single side contact field, not generate another] 
 
 *[ONE SHORT ATTRACTIVE LINE e.g. "Don't miss this gem — listed exclusively on DM Car Agency!"]*
 🌐 https://dmcaragency.vercel.app/
@@ -287,13 +287,12 @@ STRICT RULES:
 - Use *asterisks* for bold on ALL headers, price, location, and bottom tagline — exactly like the layout above
 - Car name and attractive title go on line 1 in CAPS
 - "FROM DM CAR AGENCY 🔥" always on line 2 in bold
-- Specs use dash bullet points, ALL CAPS values
+- Specs use emojis like (⛽‼️🔥💰📞👉👇🚗⚠️✅) with its related words eg: 📞 0881381486 , ALL CAPS values
 - Price and Location always bold and on separate lines
 - Contact numbers: {user number} | user number— always include both, plain (not bold)
 - Bottom tagline must be attractive, short, and encourage people to visit the website
 - End with the website link: 🌐 https://dmcaragency.vercel.app/
 - Prefix ALL prices with MWK
-- Add hashtags for Facebook post
 - Output ONLY the post. No intro, no explanation, nothing else.`;
 
     try {
